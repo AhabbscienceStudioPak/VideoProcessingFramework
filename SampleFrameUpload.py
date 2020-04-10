@@ -16,10 +16,13 @@
 
 import PyNvCodec as nvc
 import numpy as np
+import warnings
+warnings.filterwarnings("ignore")
+from google.colab import files
 
 gpuID = 0
-decFile = open("big_buck_bunny_1080p_h264.nv12", "rb")
-encFile = open("big_buck_bunny_1080p_h264.h264", "wb")
+decFile = open("/content/gdrive/My Drive/2016.mp4", "rb")
+encFile = open("/content/gdrive/My Drive/2016encode.mp4", "wb")
 
 nvEnc = nvc.PyNvEncoder({'preset': 'hq', 'codec': 'h264', 's': '1920x1080'}, gpuID)
 nvUpl = nvc.PyFrameUploader(nvEnc.Width(), nvEnc.Height(), nvEnc.PixelFormat(), gpuID)
